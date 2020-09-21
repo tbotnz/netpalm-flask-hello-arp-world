@@ -4,7 +4,7 @@ simple hello world app to pull arp table off multiple devices and render into a 
 ![netpalm arp table](/netpalm__arp.gif)
 
 ### getting started
-- build a netpalm instance and MAKE SURE you have first loaded the ```arp_service.j2``` service template
+- build a [netpalm](https://github.com/tbotnz/netpalm) instance and MAKE SURE you have first loaded the ```arp_service.j2``` service template
 - git clone the project ``` git clone https://github.com/tbotnz/netpalm-flask-hello-arp-world.git && cd netpalm-flask-hello-arp-world ```
 - update the app.py with your ```NETPALM_SERVER_IP``` ```NETPALM_SERVER_PORT``` ```NETPALM_API_KEY```
 - install the requirements ```pip3 install -r requirements.txt```
