@@ -1,7 +1,7 @@
 # netpalm-flask-hello-arp-world
 simple hello world app to pull arp table off multiple devices and render into a nice searchable datatable
 
-![netpalm arp table](/netpalm_arp.gif)
+![netpalm arp table](/netpalm__arp.gif)
 
 ### getting started
 - ensure you have a [netpalm](https://github.com/tbotnz/netpalm) container running
