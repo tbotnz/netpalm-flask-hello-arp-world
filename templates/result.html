@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <title>hello-world-network-webapp</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>hello-world-network-arp-webapp</h2>
+        <br>
+        {% if posted_data["data"]["task_status"] == "finished" %}
+        <table id="example" class="table table-borderless" style="width:100%">
+            <thead class="thead-light">
+                <tr>
+                    <th>device</th>
+                    <th>address</th>
+                    <th>age</th>
+                    <th>mac</th>
+                    <th>interface</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if "protocol" in posted_data | tojson %}
+                {% for device in posted_data["data"]["task_result"] %}
+                {% for arp in device["data"]["data"]["task_result"]["show ip arp"] %}
+                <tr>
+                    <td>{{ device["host"] }}</td>
+                    <td>{{ arp["address"] }}</td>
+                    <td>{{ arp["age"] }}</td>
+                    <td>{{ arp["mac"] }}</td>
+                    <td>{{ arp["interface"] }}</td>
+                </tr>
+                {% endfor %}
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>loading...</p>
+        <script>
+            function sleep(time) {
+                return new Promise((resolve) => setTimeout(resolve, time));
+            }
+            sleep(500).then(() => {
+                location.reload();
+            });
+        </script>
+        {% endif %}
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+</body>
+
+</html>
